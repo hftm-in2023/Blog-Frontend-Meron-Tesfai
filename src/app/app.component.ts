@@ -1,13 +1,32 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { DemoAppComponent } from './demo-app/demo-app.component';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Blog } from './model/model';
+import { BlogService } from './services/blog.service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, DemoAppComponent],
+  standalone: true,
+  imports: [CommonModule, MatCardModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Blog-Frontend-Meron-Tesfai';
+  private blogService = inject(BlogService);
+
+  blogs: Blog[] = [];
+  isLoading = true;
+
+  constructor() {
+    this.blogService.getBlogs().subscribe({
+      next: (data) => {
+        this.blogs = data;
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        alert('Fehler beim Laden der Blog-Daten.');
+      },
+    });
+  }
 }
