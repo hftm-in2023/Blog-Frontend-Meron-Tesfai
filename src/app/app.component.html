@@ -1,39 +1,27 @@
-<section class="blog-container">
-  @if (isLoading) {
-    <p class="loading">Lade Blogs...</p>
-  } @else {
-    @if (blogs.length === 0) {
-      <p class="empty">Keine Blogeinträge gefunden.</p>
-    } @else {
-      <div class="blog-list">
-        @for (blog of blogs; track blog.id) {
-          <mat-card class="blog-card" appearance="outlined">
-            <mat-card-header>
-              <mat-card-title>{{ blog.title }}</mat-card-title>
-              <mat-card-subtitle
-                >Autor: {{ blog.author }} –
-                {{ blog.createdAt | date: "mediumDate" }}</mat-card-subtitle
-              >
-            </mat-card-header>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">Startseite</a>
+      <a mat-list-item routerLink="/blog">Blogs</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-            <img
-              mat-card-image
-              [src]="blog.headerImageUrl"
-              alt="Header Image"
-              *ngIf="blog.headerImageUrl && blog.headerImageUrl !== 'string'"
-            />
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Meronsblog</span>
+    </mat-toolbar>
 
-            <mat-card-content>
-              <p>{{ blog.contentPreview }}</p>
-            </mat-card-content>
-
-            <mat-card-actions>
-              <button mat-button>👍 {{ blog.likes }}</button>
-              <button mat-button>💬 {{ blog.comments }}</button>
-            </mat-card-actions>
-          </mat-card>
-        }
-      </div>
-    }
-  }
-</section>
+    <div class="content">
+      @if (router.url === "/") {
+        <div class="welcome">
+          <h1>Willkommen zu Meronsblog</h1>
+        </div>
+      } @else {
+        <router-outlet></router-outlet>
+      }
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

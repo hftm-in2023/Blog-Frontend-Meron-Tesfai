@@ -1,32 +1,26 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Blog } from './model/model';
-import { BlogService } from './services/blog.service';
-import { MatCardModule } from '@angular/material/card';
+import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MatCardModule],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  private blogService = inject(BlogService);
-
-  blogs: Blog[] = [];
-  isLoading = true;
-
-  constructor() {
-    this.blogService.getBlogs().subscribe({
-      next: (data) => {
-        this.blogs = data;
-        this.isLoading = false;
-      },
-      error: () => {
-        this.isLoading = false;
-        alert('Fehler beim Laden der Blog-Daten.');
-      },
-    });
-  }
+  constructor(public router: Router) {}
 }
