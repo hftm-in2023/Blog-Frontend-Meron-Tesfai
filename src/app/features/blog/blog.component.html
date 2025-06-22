@@ -1,0 +1,43 @@
+<section class="blog-container">
+  @if (isLoading) {
+    <h2 class="loading">Blogs werden geladen.</h2>
+  } @else {
+    @if (blogs.length === 0) {
+      <p class="empty">Keine Blogeinträge gefunden.</p>
+    } @else {
+      <div class="blog-list">
+        @for (blog of blogs; track blog.id) {
+          <mat-card
+            class="blog-card"
+            appearance="outlined"
+            [routerLink]="['/blog', blog.id]"
+          >
+            <mat-card-header>
+              <mat-card-title>{{ blog.title }}</mat-card-title>
+              <mat-card-subtitle
+                >Autor: {{ blog.author }} –
+                {{ blog.createdAt | date: "mediumDate" }}</mat-card-subtitle
+              >
+            </mat-card-header>
+
+            <img
+              mat-card-image
+              [src]="blog.headerImageUrl"
+              alt="Header Image"
+              *ngIf="blog.headerImageUrl && blog.headerImageUrl !== 'string'"
+            />
+
+            <mat-card-content>
+              <p>{{ blog.contentPreview }}</p>
+            </mat-card-content>
+
+            <mat-card-actions>
+              <button mat-button>👍 {{ blog.likes }}</button>
+              <button mat-button>💬 {{ blog.comments }}</button>
+            </mat-card-actions>
+          </mat-card>
+        }
+      </div>
+    }
+  }
+</section>
