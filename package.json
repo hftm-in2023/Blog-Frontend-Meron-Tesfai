@@ -22,7 +22,7 @@
     "@angular/forms": "^20.0.3",
     "@angular/material": "~19.2.18",
     "@angular/platform-browser": "^19.1.0",
-    "@angular/platform-browser-dynamic": "^20.0.3",
+    "@angular/platform-browser-dynamic": "^20.0.5",
     "@angular/router": "^19.1.0",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
