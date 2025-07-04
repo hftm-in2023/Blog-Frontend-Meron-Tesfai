@@ -74,7 +74,8 @@
               "buildTarget": "Blog-Frontend-Meron-Tesfai:build:production"
             },
             "development": {
-              "buildTarget": "Blog-Frontend-Meron-Tesfai:build:development"
+              "buildTarget": "Blog-Frontend-Meron-Tesfai:build:development",
+              "proxyConfig": "./proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
