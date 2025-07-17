@@ -7,7 +7,7 @@ import { throwError, catchError } from 'rxjs';
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
   handleError(error: Error): void {
-    if (environment) {
+    if (environment.production) {
       window.location.href = '/error';
     } else {
       console.error('Global Error:', error);

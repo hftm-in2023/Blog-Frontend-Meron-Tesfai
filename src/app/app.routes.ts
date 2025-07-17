@@ -1,26 +1,25 @@
 import { Routes } from '@angular/router';
-import { dataResolver } from './features/blog/blog.resolver';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
   {
     path: '',
-    children: [
-      {
-        path: 'blog',
-        loadComponent: () =>
-          import('./features/blog/blog.component').then((m) => m.BlogComponent),
-        resolve: {
-          blog: dataResolver,
-        },
-      },
-      {
-        path: 'blog/:id',
-        loadComponent: () =>
-          import('./features/details/details.component').then(
-            (m) => m.DetailsComponent,
-          ),
-      },
-      { path: '', redirectTo: '', pathMatch: 'full' },
-    ],
+    component: AppComponent,
+    title: 'Meronsblog',
+  },
+
+  {
+    path: 'blog',
+    loadChildren: () =>
+      import('./features/blog/blog.routes').then((blog) => blog.blogRoutes),
+    title: 'Blogs',
+  },
+  {
+    path: 'blog/:id',
+    loadChildren: () =>
+      import('./features/details/details.routes').then(
+        (detail) => detail.detailsRoutes,
+      ),
+    title: 'Blogdetail',
   },
 ];

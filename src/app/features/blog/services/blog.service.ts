@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Blog } from '../model/model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlogService {
-  private apiUrl =
-    'https://d-cap-blog-backend---v2.whitepond-b96fee4b.westeurope.azurecontainerapps.io/entries';
+  private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  http = inject(HttpClient);
 
   getBlogs(): Observable<Blog[]> {
     return this.http

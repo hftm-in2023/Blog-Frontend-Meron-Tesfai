@@ -1,9 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { BlogService } from './services/blog.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { Blog } from './model/model';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -19,7 +19,9 @@ export class BlogComponent implements OnInit {
   blogs: Blog[] = [];
   isLoading = true;
 
-  constructor(private route: ActivatedRoute) {
+  @Input() id?: string;
+
+  ngOnInit(): void {
     this.blogService.getBlogs().subscribe({
       next: (data) => {
         this.blogs = data;
@@ -30,9 +32,5 @@ export class BlogComponent implements OnInit {
         alert('Fehler beim Laden der Blog-Daten.');
       },
     });
-  }
-
-  ngOnInit(): void {
-    this.blog = this.route.snapshot.data['blog'];
   }
 }
