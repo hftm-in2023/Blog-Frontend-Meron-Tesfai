@@ -21,6 +21,12 @@ export class BlogComponent implements OnInit {
 
   @Input() id?: string;
 
+  sendData() {
+    if (this.blogs != null) {
+      this.blogService.updateData(this.blogs);
+    }
+  }
+
   ngOnInit(): void {
     this.blogService.getBlogs().subscribe({
       next: (data) => {

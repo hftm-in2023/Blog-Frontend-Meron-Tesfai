@@ -10,7 +10,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
   GlobalErrorHandler,
   httpErrorInterceptor,
-} from './features/GlobalErrorHandler';
+} from './errorhandlers/GlobalErrorHandler';
 
 export const appConfig: ApplicationConfig = {
   providers: [

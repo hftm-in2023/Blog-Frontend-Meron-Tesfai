@@ -11,6 +11,7 @@
             class="blog-card"
             appearance="outlined"
             [routerLink]="['/blog', blog.id]"
+            (click)="sendData()"
           >
             <mat-card-header>
               <mat-card-title>{{ blog.title }}</mat-card-title>
