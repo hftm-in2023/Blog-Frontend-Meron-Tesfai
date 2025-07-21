@@ -4,7 +4,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { DatePipe } from '@angular/common';
 import { BlogService } from '../../smart/blog/services/blog.service';
-import { Blog } from '../../smart/blog/model/model';
+import { BlogData } from '../../smart/blog/model/model';
 
 @Component({
   selector: 'app-details',
@@ -15,7 +15,7 @@ import { Blog } from '../../smart/blog/model/model';
 export class DetailsComponent implements OnInit {
   @Input() id!: string;
 
-  blog?: Blog;
+  blog?: BlogData;
 
   blogService = inject(BlogService);
 

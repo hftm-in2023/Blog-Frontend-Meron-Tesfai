@@ -2,8 +2,8 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { BlogService } from './services/blog.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { Blog } from './model/model';
 import { RouterLink } from '@angular/router';
+import { BlogData } from './model/model';
 
 @Component({
   selector: 'app-blog',
@@ -12,11 +12,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './blog.component.scss',
 })
 export class BlogComponent implements OnInit {
-  blog: Blog[] | null = null;
+  blog: BlogData[] | null = null;
 
   private blogService = inject(BlogService);
 
-  blogs: Blog[] = [];
+  blogs: BlogData[] = [];
   isLoading = true;
 
   @Input() id?: string;
