@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
-import { Blog } from '../model/model';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
+import { BlogData } from '../model/model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +10,19 @@ import { environment } from '../../../../environments/environment';
 export class BlogService {
   private apiUrl = environment.apiUrl;
 
+  private datasource = new BehaviorSubject<BlogData[]>([]);
+
+  blogs$ = this.datasource.asObservable();
+
+  updateData(data: BlogData[]) {
+    this.datasource.next(data);
+  }
+
   http = inject(HttpClient);
 
-  getBlogs(): Observable<Blog[]> {
+  getBlogs(): Observable<BlogData[]> {
     return this.http
-      .get<{ data: Blog[] }>(this.apiUrl)
+      .get<{ data: BlogData[] }>(this.apiUrl)
       .pipe(map((response) => response.data));
   }
 }
