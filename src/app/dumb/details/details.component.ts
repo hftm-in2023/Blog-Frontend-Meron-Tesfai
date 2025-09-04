@@ -1,4 +1,10 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+  OnInit,
+} from '@angular/core';
 import { map } from 'rxjs';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
@@ -11,9 +17,10 @@ import { BlogData } from '../../smart/blog/model/model';
   imports: [MatListModule, MatDividerModule, DatePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DetailsComponent implements OnInit {
-  @Input() id!: string;
+  id = input<string>();
 
   blog?: BlogData;
 
@@ -21,7 +28,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.blogService.blogs$
-      .pipe(map((blogs) => blogs.find((blog) => blog.id === Number(this.id))))
+      .pipe(map((blogs) => blogs.find((blog) => blog.id === Number(this.id()))))
       .subscribe((blog) => {
         this.blog = blog;
       });

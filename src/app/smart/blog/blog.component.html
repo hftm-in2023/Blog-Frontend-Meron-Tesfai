@@ -1,12 +1,12 @@
 <section class="blog-container">
-  @if (isLoading) {
-    <h2 class="loading">Blogs werden geladen.</h2>
+  @if (loading()) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   } @else {
-    @if (blogs.length === 0) {
+    @if (blogs().length === 0) {
       <p class="empty">Keine Blogeinträge gefunden.</p>
     } @else {
       <div class="blog-list">
-        @for (blog of blogs; track blog.id) {
+        @for (blog of blogs(); track blog.id) {
           <mat-card
             class="blog-card"
             appearance="outlined"
