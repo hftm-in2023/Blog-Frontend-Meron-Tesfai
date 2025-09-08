@@ -23,7 +23,7 @@
     "@angular/material": "~20.1.0",
     "@angular/platform-browser": "^20.1.0",
     "@angular/platform-browser-dynamic": "^20.1.0",
-    "@angular/router": "^20.1.0",
+    "@angular/router": "^20.2.4",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "blog-frontend-meron-tesfai": "file:",
