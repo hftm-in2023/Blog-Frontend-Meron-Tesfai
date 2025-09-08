@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { BlogData } from '../smart/blog/model/model';
+import { BlogData } from '../../feature/blog/model/model';
 
 export interface getBlogs {
   blogs: BlogData[];

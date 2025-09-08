@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { isAuthenticatedGuardGuard } from './core/guard/is-authenticated-guard.guard';
 
 export const routes: Routes = [
   {
@@ -10,16 +11,26 @@ export const routes: Routes = [
 
   {
     path: 'blog',
-    loadChildren: () =>
-      import('./smart/blog/blog.routes').then((blog) => blog.blogRoutes),
+    loadComponent: () =>
+      import('./feature/blog/blog.component').then(
+        (blog) => blog.BlogComponent,
+      ),
     title: 'Blogs',
   },
   {
     path: 'blog/:id',
-    loadChildren: () =>
-      import('./dumb/details/details.routes').then(
-        (detail) => detail.detailsRoutes,
+    loadComponent: () =>
+      import('./feature/details/details.component').then(
+        (detail) => detail.DetailsComponent,
       ),
     title: 'Blogdetail',
+  },
+  {
+    path: 'add-blog',
+    loadComponent: () =>
+      import('./feature/add-blog-page/add-blog-page.component').then(
+        (addBlog) => addBlog.AddBlogPageComponent,
+      ),
+    canActivate: [isAuthenticatedGuardGuard],
   },
 ];

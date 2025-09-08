@@ -1,11 +1,11 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
-import { BlogService } from './services/blog.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
 import { BlogData } from './model/model';
-import { BlogListStatServiceService } from '../../state/blog-list-stat.service.service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { BlogService } from '../../core/blog/blog-backend';
+import { BlogListStatServiceService } from '../../core/state/blog-list-stat.service.service';
 
 @Component({
   selector: 'app-blog',
@@ -30,8 +30,6 @@ export class BlogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.blogStateService.setLoading(true);
-
     this.blogService.getBlogs().subscribe({
       next: (data) => {
         this.blogStateService.setItems(data);
@@ -41,5 +39,6 @@ export class BlogComponent implements OnInit {
         alert('Fehler beim Laden der Blog-Daten.');
       },
     });
+    this.blogStateService.setLoading(true);
   }
 }

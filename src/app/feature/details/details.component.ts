@@ -9,8 +9,8 @@ import { map } from 'rxjs';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { DatePipe } from '@angular/common';
-import { BlogService } from '../../smart/blog/services/blog.service';
-import { BlogData } from '../../smart/blog/model/model';
+import { BlogData } from '../blog/model/model';
+import { BlogService } from '../../core/blog/blog-backend';
 
 @Component({
   selector: 'app-details',

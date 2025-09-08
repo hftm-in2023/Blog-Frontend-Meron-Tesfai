@@ -20,14 +20,6 @@
                 {{ blog.createdAt | date: "mediumDate" }}</mat-card-subtitle
               >
             </mat-card-header>
-
-            <img
-              mat-card-image
-              [src]="blog.headerImageUrl"
-              alt="Header Image"
-              *ngIf="blog.headerImageUrl && blog.headerImageUrl !== 'string'"
-            />
-
             <mat-card-content>
               <p>{{ blog.contentPreview }}</p>
             </mat-card-content>

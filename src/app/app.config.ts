@@ -7,8 +7,10 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { GlobalErrorHandler } from './errorhandlers/GlobalErrorHandler';
-import { errorInterceptor } from './errorhandlers/HttpErrorInterceptor';
+import { errorInterceptor } from './core/errorhandlers/HttpErrorInterceptor';
+import { GlobalErrorHandler } from './core/errorhandlers/GlobalErrorHandler';
+import { authConfig } from './auth/auth.config';
+import { provideAuth } from 'angular-auth-oidc-client';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,5 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([errorInterceptor])),
     provideAnimations(),
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    provideAuth(authConfig),
   ],
 };
