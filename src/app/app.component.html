@@ -1,28 +1,12 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer mode="side" opened>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/">Startseite</a>
-      <a mat-list-item routerLink="/blog">Blogs</a>
-      <a mat-list-item routerLink="/add-blog">Add blog</a>
-    </mat-nav-list>
-  </mat-sidenav>
+<mat-nav-list class="horizontal-nav">
+  <a mat-list-item routerLink="/">Home</a>
+  <a mat-list-item routerLink="/blog">Blogs</a>
 
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>Meronsblog</span>
-    </mat-toolbar>
-
-    <div class="content">
-      @if (router.url === "/") {
-        <div class="welcome">
-          <h1>Willkommen zu Meronsblog</h1>
-        </div>
-      } @else {
-        <router-outlet></router-outlet>
-      }
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  @if (isAuthenticated()) {
+    <a mat-list-item routerLink="/add-blog">Add blog</a>
+    <button mat-list-item (click)="logout()" class="right">Logout</button>
+  } @else {
+    <button mat-list-item (click)="login()" class="right">Login</button>
+  }
+</mat-nav-list>
+<router-outlet></router-outlet>

@@ -11,10 +11,11 @@ import { MatListModule } from '@angular/material/list';
 import { DatePipe } from '@angular/common';
 import { BlogData } from '../blog/model/model';
 import { BlogService } from '../../core/blog/blog-backend';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-details',
-  imports: [MatListModule, MatDividerModule, DatePipe],
+  imports: [MatListModule, MatDividerModule, DatePipe, MatCardModule],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

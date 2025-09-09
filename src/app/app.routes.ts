@@ -1,14 +1,13 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { isAuthenticatedGuardGuard } from './core/guard/is-authenticated-guard.guard';
+import { isAuthenticatedGuard } from './core/guard/is-authenticated-guard.guard';
+import { WelcomeComponent } from './feature/welcome/welcome.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    component: WelcomeComponent,
     title: 'Meronsblog',
   },
-
   {
     path: 'blog',
     loadComponent: () =>
@@ -31,6 +30,6 @@ export const routes: Routes = [
       import('./feature/add-blog-page/add-blog-page.component').then(
         (addBlog) => addBlog.AddBlogPageComponent,
       ),
-    canActivate: [isAuthenticatedGuardGuard],
+    canActivate: [isAuthenticatedGuard],
   },
 ];

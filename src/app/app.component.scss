@@ -1,16 +1,18 @@
-.sidenav-container {
-  height: 100vh;
-}
-
-mat-sidenav {
-  width: 250px;
-}
-
-.content {
-  padding: 16px;
-}
-.welcome {
+.horizontal-nav {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  padding: 10px;
+  align-items: center;
+  margin-bottom: 50px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.horizontal-nav a[mat-list-item],
+.horizontal-nav button[mat-list-item] {
+  width: auto;
+  padding: 0 16px;
+}
+
+.horizontal-nav .right {
+  margin-left: auto;
 }
