@@ -8,11 +8,11 @@ export const isAuthenticatedGuard: CanActivateFn = async () => {
   const oidcSecurityService = inject(OidcSecurityService);
 
   try {
-    const { isAuthenticated } = await firstValueFrom(
+    const { isAuthenticated, accessToken } = await firstValueFrom(
       oidcSecurityService.checkAuth(),
     );
 
-    if (isAuthenticated) {
+    if (isAuthenticated && hasRole(accessToken, 'user')) {
       return true;
     } else {
       router.navigate(['/']);
@@ -24,3 +24,9 @@ export const isAuthenticatedGuard: CanActivateFn = async () => {
     return false;
   }
 };
+
+function hasRole(token: string, role: string): boolean {
+  const decoded = JSON.parse(atob(token?.split('.')[1]));
+  const roles: string[] = decoded?.realm_access?.roles || [];
+  return roles.includes(role);
+}
