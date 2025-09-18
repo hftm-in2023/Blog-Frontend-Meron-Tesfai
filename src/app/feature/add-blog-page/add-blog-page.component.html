@@ -1,1 +1,41 @@
-<p>add-blog-page works!</p>
+<form [formGroup]="addBlogForm" (ngSubmit)="onSubmit()">
+  <div class="blog-input">
+    <div>
+      <button
+        class="submit-button"
+        mat-raised-button
+        color="primary"
+        [disabled]="submitButtonDisabled()"
+      >
+        Publish blog
+      </button>
+
+      <button type="reset" mat-raised-button color="secondary">Reset</button>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label for="title">Title</mat-label>
+      <input matInput formControlName="title" />
+      <mat-error>
+        @if (addBlogForm.get("title")?.hasError("required")) {
+          <span>Title is required</span>
+        } @else if (addBlogForm.get("title")?.hasError("minLength")) {
+          <span>Title must be at least 2 characters long</span>
+        } @else if (addBlogForm.get("title")?.hasError("pattern")) {
+          <span>Title must start with a capital letter</span>
+        }
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="content">Tell your story...</mat-label>
+      <textarea matInput rows="20" formControlName="content"></textarea>
+      <mat-error>
+        @if (addBlogForm.get("content")?.hasError("required")) {
+          <span>Content is required</span>
+        } @else if (addBlogForm.get("content")?.hasError("minlength")) {
+          <span>Content must be at least 50 characters long</span>
+        }
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>

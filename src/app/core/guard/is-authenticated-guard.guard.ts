@@ -15,7 +15,7 @@ export const isAuthenticatedGuard: CanActivateFn = async () => {
     if (isAuthenticated && hasRole(accessToken, 'user')) {
       return true;
     } else {
-      router.navigate(['/']);
+      alert('Bitte Melde dich wieder an');
       return false;
     }
   } catch (error) {
