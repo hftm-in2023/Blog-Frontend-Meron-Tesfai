@@ -13,6 +13,11 @@
             [routerLink]="['/blog', blog.id]"
             (click)="sendData()"
           >
+            <img
+              mat-card-image
+              src="https://images.pexels.com/photos/267389/pexels-photo-267389.jpeg"
+              alt="Blog image"
+            />
             <mat-card-header>
               <mat-card-title>{{ blog.title }}</mat-card-title>
               <mat-card-subtitle
@@ -23,7 +28,6 @@
             <mat-card-content>
               <p>{{ blog.contentPreview }}</p>
             </mat-card-content>
-
             <mat-card-actions>
               <button mat-button>👍 {{ blog.likes }}</button>
               <button mat-button>💬 {{ blog.comments }}</button>

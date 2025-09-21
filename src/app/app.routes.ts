@@ -9,6 +9,11 @@ export const routes: Routes = [
     title: 'Meronsblog',
   },
   {
+    path: 'overview',
+    component: WelcomeComponent,
+    title: 'Meronsblog',
+  },
+  {
     path: 'blog',
     loadComponent: () =>
       import('./feature/blog/blog.component').then(

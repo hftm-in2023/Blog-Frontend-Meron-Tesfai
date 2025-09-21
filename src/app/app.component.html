@@ -1,12 +1,1 @@
-<mat-nav-list class="horizontal-nav">
-  <a mat-list-item routerLink="/">Home</a>
-  <a mat-list-item routerLink="/blog">Blogs</a>
-
-  @if (isAuthenticated()) {
-    <a mat-list-item routerLink="/add-blog">Add blog</a>
-    <button mat-list-item (click)="logout()" class="right">Logout</button>
-  } @else {
-    <button mat-list-item (click)="login()" class="right">Login</button>
-  }
-</mat-nav-list>
-<router-outlet></router-outlet>
+<app-sidebar></app-sidebar>
