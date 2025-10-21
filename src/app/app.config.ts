@@ -11,6 +11,8 @@ import { errorInterceptor } from './core/errorhandlers/HttpErrorInterceptor';
 import { GlobalErrorHandler } from './core/errorhandlers/GlobalErrorHandler';
 import { authConfig } from './auth/auth.config';
 import { provideAuth } from 'angular-auth-oidc-client';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideTranslateService } from '@ngx-translate/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +22,13 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     provideAuth(authConfig),
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: '/i18n/',
+        suffix: '.json',
+      }),
+      fallbackLang: 'de',
+      lang: 'de',
+    }),
   ],
 };

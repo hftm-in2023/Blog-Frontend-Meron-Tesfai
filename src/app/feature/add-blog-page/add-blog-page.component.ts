@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AddBlogService } from './add-blog-service/add-blog.service';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-blog-page',
   imports: [
@@ -21,6 +22,7 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    TranslatePipe,
   ],
   templateUrl: './add-blog-page.component.html',
   styleUrl: './add-blog-page.component.scss',

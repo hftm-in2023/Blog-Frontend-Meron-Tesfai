@@ -9,8 +9,14 @@
       {{ blog?.contentPreview }}
     </section>
     <section>
-      <p>Likes:{{ blog?.likes }} Comments: {{ blog?.comments }}</p>
-      <p>Veröffentlicht: {{ blog?.createdAt | date }}</p>
+      <p>
+        Likes:{{ blog?.likes }} {{ "detailsComponent.comments" | translate }}
+        {{ blog?.comments }}
+      </p>
+      <p>
+        {{ "detailsComponent.createdAt" | translate }}
+        {{ blog?.createdAt | date }}
+      </p>
     </section>
   </mat-card-content>
 </mat-card>

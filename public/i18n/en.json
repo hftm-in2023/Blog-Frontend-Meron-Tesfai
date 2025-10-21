@@ -1,0 +1,33 @@
+{
+  "WelcomeComponent": {
+    "greeting": "Welcome to Meron's Blog"
+  },
+  "addBlogComponent": {
+    "publishBlog": "Publish Blog",
+    "reset": "Reset All",
+    "title": "Title",
+    "matError": {
+      "noTitle": "A title is required.",
+      "minlength": "The title must contain at least 2 letters.",
+      "pattern": "The title must start with a capital letter."
+    },
+    "formfield": {
+      "label": "Share your story",
+      "matError": {
+        "required": "Blog content cannot be empty.",
+        "minlength": "The blog content must contain at least 50 letters."
+      }
+    }
+  },
+  "blogComponent": {
+    "blogInfo": "No blog posts found."
+  },
+  "detailsComponent": {
+    "comments": "Comments:",
+    "createdAt": "Published:"
+  },"sidbar": {
+ "loginButton": "Login",
+ "logoutButton": "Logout",
+ "addBlogButton": "Add Blog"
+}
+}

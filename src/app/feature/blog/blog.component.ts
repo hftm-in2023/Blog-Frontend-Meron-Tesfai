@@ -6,10 +6,17 @@ import { BlogData } from './model/model';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BlogService } from '../../core/blog/blog-backend';
 import { BlogListStatServiceService } from '../../core/state/blog-list-stat.service.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-blog',
-  imports: [CommonModule, MatCardModule, RouterLink, MatProgressBarModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    RouterLink,
+    MatProgressBarModule,
+    TranslatePipe,
+  ],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss',
 })

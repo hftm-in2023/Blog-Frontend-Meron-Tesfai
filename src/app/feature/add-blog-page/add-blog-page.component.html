@@ -7,33 +7,43 @@
         color="primary"
         [disabled]="submitButtonDisabled()"
       >
-        Publish blog
+        {{ "addBlogComponent.publishBlog" | translate }}
       </button>
 
-      <button type="reset" mat-raised-button color="secondary">Reset</button>
+      <button type="reset" mat-raised-button color="secondary">
+        {{ "addBlogComponent.reset" | translate }}
+      </button>
     </div>
     <mat-form-field appearance="fill">
-      <mat-label for="title">Title</mat-label>
+      <mat-label for="title">{{
+        "addBlogComponent.title" | translate
+      }}</mat-label>
       <input matInput formControlName="title" />
       <mat-error>
         @if (addBlogForm.get("title")?.hasError("required")) {
-          <span>Title is required</span>
+          <span>{{ "addBlogComponent.matError.noTitle" | translate }}</span>
         } @else if (addBlogForm.get("title")?.hasError("minLength")) {
-          <span>Title must be at least 2 characters long</span>
+          <span>{{ "addBlogComponent.matError.minlength" | translate }}</span>
         } @else if (addBlogForm.get("title")?.hasError("pattern")) {
-          <span>Title must start with a capital letter</span>
+          <span>{{ "addBlogComponent.matError.pattern" | translate }}</span>
         }
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label for="content">Tell your story...</mat-label>
+      <mat-label for="content">{{
+        "addBlogComponent.formfield.label" | translate
+      }}</mat-label>
       <textarea matInput rows="20" formControlName="content"></textarea>
       <mat-error>
         @if (addBlogForm.get("content")?.hasError("required")) {
-          <span>Content is required</span>
+          <span>{{
+            "addBlogComponent.formfield.matError.required" | translate
+          }}</span>
         } @else if (addBlogForm.get("content")?.hasError("minlength")) {
-          <span>Content must be at least 50 characters long</span>
+          <span>{{
+            "addBlogComponent.formfield.matError.minlength" | translate
+          }}</span>
         }
       </mat-error>
     </mat-form-field>

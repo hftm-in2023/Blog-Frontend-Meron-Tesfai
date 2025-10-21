@@ -11,6 +11,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -25,9 +26,12 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     AsyncPipe,
     RouterOutlet,
     RouterLink,
+    TranslatePipe,
   ],
 })
 export class SidebarComponent implements OnInit {
+  private translate = inject(TranslateService);
+
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver
@@ -67,5 +71,13 @@ export class SidebarComponent implements OnInit {
     this.oidcSecurityService.logoffAndRevokeTokens().subscribe((result) => {
       console.log('Logged out', result);
     });
+  }
+
+  setLangToEnglish() {
+    this.translate.use('en');
+  }
+
+  setLangToGerman() {
+    this.translate.use('de');
   }
 }

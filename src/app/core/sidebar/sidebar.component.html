@@ -13,12 +13,16 @@
       <a mat-list-item routerLink="/blog">Blogs</a>
 
       @if (isAuthenticated()) {
-        <a mat-list-item routerLink="/add-blog">Add blog</a>
+        <a mat-list-item routerLink="/add-blog">{{
+          "sidbar.addBlogButton" | translate
+        }}</a>
 
-        <button mat-list-item (click)="logout()">Logout</button>
+        <button mat-list-item (click)="logout()">
+          {{ "sidbar.logoutButton" | translate }}
+        </button>
       } @else {
-        <button mat-list-item (click)="login()" class="bottomLeft">
-          Login
+        <button mat-list-item (click)="login()">
+          {{ "sidbar.loginButton" | translate }}
         </button>
       }
     </mat-nav-list>
@@ -35,6 +39,14 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
+      <div class="lang-switch">
+        <button mat-button (click)="setLangToGerman()">
+          <span>DE</span>
+        </button>
+        <button mat-button (click)="setLangToEnglish()">
+          <span>EN</span>
+        </button>
+      </div>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

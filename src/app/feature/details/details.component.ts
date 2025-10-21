@@ -12,10 +12,17 @@ import { DatePipe } from '@angular/common';
 import { BlogData } from '../blog/model/model';
 import { BlogService } from '../../core/blog/blog-backend';
 import { MatCardModule } from '@angular/material/card';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-details',
-  imports: [MatListModule, MatDividerModule, DatePipe, MatCardModule],
+  imports: [
+    MatListModule,
+    MatDividerModule,
+    DatePipe,
+    MatCardModule,
+    TranslatePipe,
+  ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

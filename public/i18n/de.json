@@ -1,0 +1,34 @@
+{
+  "WelcomeComponent": {
+    "greeting": "Willkommen auf Merons Blog"
+  },
+  "addBlogComponent": {
+    "publishBlog": "Blog veröffentlichen",
+    "reset": "Alles widerrufen",
+    "title": "Titel",
+    "matError": {
+      "noTitle": "Ein Titel ist erforderlich.",
+      "minlength": "Der Titel muss mindestens 2 Buchstaben enthalten.",
+      "pattern": "Der Titel muss mit einem Großbuchstaben beginnen."
+    },
+    "formfield": {
+      "label": "Erzähle deine Geschichte",
+      "matError": {
+        "required": "Der Bloginhalt darf nicht leer sein.",
+        "minlength": "Der Bloginhalt muss mindestens 50 Buchstaben enthalten."
+      }
+    }
+  },
+  "blogComponent": {
+    "blogInfo": "Keine Blogeinträge gefunden."
+  },
+  "detailsComponent": {
+    "comments": "Kommentare:",
+    "createdAt": "Veröffentlicht:"
+  },
+  "sidbar": {
+ "loginButton": "Anmelden",
+ "logoutButton": "Abmelden",
+ "addBlogButton": "Blog erstellen"
+}
+}
